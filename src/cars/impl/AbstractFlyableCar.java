@@ -1,10 +1,12 @@
-package cars;
+package cars.impl;
+
+import cars.IFlyable;
 
 public abstract class AbstractFlyableCar extends AbstractCar implements IFlyable {
 
     private int wing;
 
-    public AbstractFlyableCar(int door, int wing) {
+    AbstractFlyableCar(int door, int wing) {
         super(door);
         this.wing = wing;
     }

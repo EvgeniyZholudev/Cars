@@ -1,6 +1,6 @@
 package cars.engine;
 
-public class Engine {
+public class Engine implements IEngine{
 
     public void start(){}
 

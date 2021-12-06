@@ -1,6 +1,12 @@
-import cars.AbstractCar;
-import cars.Car;
-import cars.FlyableCar;
+import cars.IFlyableCar;
+import cars.IMachine;
+import cars.impl.AbstractCar;
+import cars.impl.Car;
+import cars.impl.FlyableCar;
+import factory.IRepairFactory;
+import factory.RepairFactory;
+import storage.IStorage;
+import storage.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +14,14 @@ import java.util.List;
 public class Training {
 
     public static void main(String[] args) {
-        AbstractCar car = new Car(2, 2);
-        AbstractCar flyableCar = new FlyableCar(2, 2, 2);
-        List<AbstractCar> cars = new ArrayList<>();
+        IMachine car = new Car(2, 2);
+        IFlyableCar flyableCar = new FlyableCar(2, 2, 2);
+        List<IMachine> cars = new ArrayList<>();
         cars.add(car);
         cars.add(flyableCar);
 
-        RepairFactory factory = new RepairFactory();
-        Storage storage = new Storage(10, 10, 10);
+        IRepairFactory factory = new RepairFactory();
+        IStorage storage = new Storage(10, 10, 10);
         storage.setRepairFactory(factory);
         storage.setCars(cars);
         storage.fixFlyableCar();

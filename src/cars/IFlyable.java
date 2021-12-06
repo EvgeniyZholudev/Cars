@@ -1,4 +1,8 @@
 package cars;
 
-public interface IFlyable {
+public interface IFlyable extends IMachine {
+
+    int getWing();
+
+    void setWing(int wing);
 }

@@ -1,16 +1,19 @@
-import cars.AbstractCar;
-import cars.FlyableCar;
+package storage;
+
+import cars.IFlyableCar;
+import cars.IMachine;
+import factory.IRepairFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage {
+public class Storage implements IStorage {
 
     private int wheel;
     private int door;
     private int wing;
-    private List<AbstractCar> cars;
-    private RepairFactory repairFactory;
+    private List<IMachine> cars;
+    private IRepairFactory repairFactory;
 
     public Storage(int wheel, int door, int wing) {
         this.wheel = wheel;
@@ -19,14 +22,14 @@ public class Storage {
         this.cars = new ArrayList<>();
     }
 
-    public void fixCar(){
+    public void fixCar() {
         this.repairFactory.fix(this.cars.get(0), wheel, door);
     }
 
-    public void fixFlyableCar(){
-        for(AbstractCar car: cars) {
-            if(car instanceof FlyableCar) {
-                this.repairFactory.fix((FlyableCar) car, wheel, door, wing);
+    public void fixFlyableCar() {
+        for (IMachine car : cars) {
+            if (car instanceof IFlyableCar) {
+                this.repairFactory.fix((IFlyableCar) car, wheel, door, wing);
             }
         }
     }
@@ -47,19 +50,19 @@ public class Storage {
         this.door = door;
     }
 
-    public List<AbstractCar> getCars() {
+    public List<IMachine> getCars() {
         return cars;
     }
 
-    public void setCars(List<AbstractCar> cars) {
+    public void setCars(List<IMachine> cars) {
         this.cars = cars;
     }
 
-    public RepairFactory getRepairFactory() {
+    public IRepairFactory getRepairFactory() {
         return repairFactory;
     }
 
-    public void setRepairFactory(RepairFactory repairFactory) {
+    public void setRepairFactory(IRepairFactory repairFactory) {
         this.repairFactory = repairFactory;
     }
 }

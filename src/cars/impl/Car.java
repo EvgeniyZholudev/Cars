@@ -1,4 +1,4 @@
-package cars;
+package cars.impl;
 
 public class Car extends AbstractDrivableCar {
 
